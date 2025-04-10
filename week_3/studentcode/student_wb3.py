@@ -155,77 +155,54 @@ wall_colour= 0.0
 hole_colour = 1.0
 
 def create_maze_breaks_depthfirst():
+    # Load base maze
+    maze = Maze(mazefile="maze.txt")
+
+    maze.contents[3][4] = hole_colour  # Open path to trick DFS
+    maze.contents[8][4] = wall_colour  # Block DFS at the end
+
+    maze.contents[10][6] = hole_colour  # Another DFS trap
+    maze.contents[14][6] = wall_colour  # Dead-end
+    maze.contents[16][1] = hole_colour  # Dead-end
+    maze.contents[19][4] = hole_colour  # Dead-end
+
+    maze.contents[8][1] = hole_colour
+    maze.contents[12][9] = wall_colour
+    maze.contents[11][12] = wall_colour
+    maze.contents[9][2] = wall_colour
+    maze.contents[10][19] = wall_colour
+    maze.contents[18][5] = wall_colour
+    
+    
+
+    
+    # Save the maze
+    maze.save_to_txt("maze-breaks-depth.txt")
+
+    maze.contents[1][8] = wall_colour
+    maze.contents[9][10] = wall_colour
+    maze.contents[15][6] = wall_colour
+    maze.contents[13][2] = wall_colour
+    maze.contents[12][13] = wall_colour
+    maze.contents[2][13] = wall_colour
+    maze.save_to_txt("maze-depth-better.txt")
+
+def create_maze_depth_better():
     # ====> insert your code below here
     #remember to comment out any mention of show_maze() before you submit your work
 
     # Create a default 21x21 maze from maze.txt
     maze = Maze(mazefile="maze.txt")
     
-    # Set start and goal positions
-    maze.start = (1, 1)
-    maze.goal = (19, 19)
-    
-    # Ensure a clear path from (1,1) to (1,19) to (19,19)
-    maze.contents[1][1] = hole_colour
-    maze.contents[1][2] = hole_colour
-    maze.contents[1][3] = hole_colour
-    maze.contents[1][4] = hole_colour
-    maze.contents[1][5] = hole_colour
-    maze.contents[1][6] = hole_colour
-    maze.contents[1][7] = hole_colour
-    maze.contents[1][8] = hole_colour
-    maze.contents[1][9] = hole_colour
-    maze.contents[1][10] = hole_colour
-    maze.contents[1][11] = hole_colour
-    maze.contents[1][12] = hole_colour
-    maze.contents[1][13] = hole_colour
-    maze.contents[1][14] = hole_colour
-    maze.contents[1][15] = hole_colour
-    maze.contents[1][16] = hole_colour
-    maze.contents[1][17] = hole_colour
-    maze.contents[1][18] = hole_colour
-    maze.contents[1][19] = hole_colour
-    maze.contents[2][19] = hole_colour
-    maze.contents[3][19] = hole_colour
-    maze.contents[4][19] = hole_colour
-    maze.contents[5][19] = hole_colour
-    maze.contents[6][19] = hole_colour
-    maze.contents[7][19] = hole_colour
-    maze.contents[8][19] = hole_colour
-    maze.contents[9][19] = hole_colour
-    maze.contents[10][19] = hole_colour
-    maze.contents[11][19] = hole_colour
-    maze.contents[12][19] = hole_colour
-    maze.contents[13][19] = hole_colour
-    maze.contents[14][19] = hole_colour
-    maze.contents[15][19] = hole_colour
-    maze.contents[16][19] = hole_colour
-    maze.contents[17][19] = hole_colour
-    maze.contents[18][19] = hole_colour
-    maze.contents[19][19] = hole_colour
-    
-    # Long dead-end from (1,15) to (20,15) to trap DFS
-    maze.contents[1][15] = hole_colour  # Already set above
-    maze.contents[2][15] = hole_colour
-    maze.contents[3][15] = hole_colour
-    maze.contents[4][15] = hole_colour
-    maze.contents[5][15] = hole_colour
-    maze.contents[6][15] = hole_colour
-    maze.contents[7][15] = hole_colour
-    maze.contents[8][15] = hole_colour
-    maze.contents[9][15] = hole_colour
-    maze.contents[10][15] = hole_colour
-    maze.contents[11][15] = hole_colour
-    maze.contents[12][15] = hole_colour
-    maze.contents[13][15] = hole_colour
-    maze.contents[14][15] = hole_colour
-    maze.contents[15][15] = hole_colour
-    maze.contents[16][15] = hole_colour
-    maze.contents[17][15] = hole_colour
-    maze.contents[18][15] = hole_colour
-    maze.contents[19][15] = hole_colour
-    maze.contents[20][15] = hole_colour
+    maze.contents[1][8] = wall_colour
+    maze.contents[9][10] = wall_colour
+    maze.contents[15][6] = wall_colour
+    maze.contents[13][2] = wall_colour
+    maze.contents[12][13] = wall_colour
+    maze.contents[2][13] = wall_colour
+    maze.save_to_txt("maze-depth-better.txt")
+
     
     # Save the maze
-    maze.save_to_txt("maze-breaks-depth.txt")
+    maze.save_to_txt("maze-depth-better.txt")
     # <==== insert your code above here
